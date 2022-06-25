@@ -29,21 +29,35 @@ print(" You have to create an account to use this tool....")
 time.sleep(2)
 def login():
     uname=input("  set user name ..: ")
-    upass=input("  set strong passworde  : ") 
+    upass=input("  set strong password  : ") 
     time.sleep(2)
-    print(Fore.GREEN+" account succefsully created!")
+    official_user=(uname)
+    official_pass=(upass)
     time.sleep(2)
     subprocess.call('clear',shell=True)
     print("\n")
     print("\n")
     name=input(" Enter your username here  : ")
+    if name == official_user:
+        print(f" welcome {official_user}, enter your password below")
+    else:
+        print(Fore.RED+" WARNING! User not recognized!")
     pas=input(" Enter your pass here : ")
-    time.sleep(2)
+    if pas == official_pass:
+        print(Fore.GREEN+" Authentication Successful!..") 
+    else:
+        print(Fore.RED+" Wrong Password..\n            Status: Failed!\n      Please retry from the begining to avoid any runtime errors!")
+    if name is official_user and pas is official_pass:
+        print(Fore.GREEN+"  user logged in succesfully!")
+    else:
+        print(Fore.RED+"  Error in getting user details...")                  
+    time.sleep(2) 
+    print(Fore.GREEN+" account succefsully created!")
     subprocess.call('clear',shell=True) 
     time.sleep(2)
     with open("secret.txt","wb") as lock:
-     upass.write(lock)   
      print(lock)
+     time.sleep(2)
      
 """ above code does not store any names and passwords anywhere as either way, the tool still runs
 """  
@@ -75,6 +89,7 @@ banner2=pyfiglet.figlet_format("X-work")
 print(Fore.GREEN+" >>>Please wait while we process your results...")
 time.sleep(2)
 print(banner2)
+
 ssip=80
 try:
     ip=socket.gethostbyname(source)
@@ -85,13 +100,17 @@ try:
     time.sleep(2)
     print("====>>>>> "+ip)
     ip2=socket.gethostbyaddr(source)
-    print(ip2)
     l1=[]
+    l1.append(ip2)
+    print([ip2])
     print("Target-ip >>  "+ip+"\n")
 except socket.gaierror:
     print(Fore.RED+" Failed to connect to target ..") 
 s.connect((source,ssip))
-print(f"       Above are the results of {source} 100% accurate!")
+print(f"[ the results of>> ] {source} [<<100% accurate!]")
 print(Fore.YELLOW+" Connected to source..")
-os.listdir()
+dir=os.listdir()
+print(dir)
+
+# goodluck!
 
